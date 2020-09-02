@@ -1,5 +1,6 @@
 import * as core from "./core.js"
 import { Event } from "./event.js"
+import { D } from "./d.js"
 
 export class ConsoleOutput implements core.Output {
   output(event: Event) {
@@ -25,7 +26,19 @@ export class ConsoleOutput implements core.Output {
       delim = [' {', '}']
     let label_task = `${event.task.label}${delim[0]}${event.task.identifiers.text()}${delim[1]}`
 
-    console.log(`${event.code} ${label_comp}${label_task} ${id}`)
+    let msg = ((!event.task.is_func && !event.task.is_component) ? ' - ' : ' ') + event.msg
+
+    let eph = new D(event.ephemeral)
+    let blob_text = eph.get('text')
+    if (blob_text)
+      eph.delete('text')
+    let blob_binary = eph.get('binary')
+    if (blob_binary)
+      eph.delete('binary')
+
+
+    console.log(`${event.code} ${label_comp}${label_task}${msg} <${id}> {${eph.text()}}${(eph)?' ':''}${(blob_text || blob_binary)?'>>':''}`+((blob_text)?"\n"+blob_text:'')+((blob_binary)?"\n"+blob_binary:''))
+
   }
 
 }
