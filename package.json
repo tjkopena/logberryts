@@ -1,0 +1,24 @@
+{
+  "name": "logberry",
+  "version": "0.1.0",
+  "description": "Structured logging for TypeScript applications.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjkopena/logberryts.git"
+  },
+  "keywords": [
+    "structured",
+    "logging"
+  ],
+  "author": "Joe Kopena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjkopena/logberryts/issues"
+  },
+  "homepage": "https://github.com/tjkopena/logberryts#readme"
+}
